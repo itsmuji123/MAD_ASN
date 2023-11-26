@@ -1,6 +1,7 @@
 import android.content.Context
 import android.content.Intent
 import android.database.Cursor
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,6 +50,15 @@ class MyCursorAdapter(context: Context, cursor: Cursor?) :
                 nameTv.text = name
                 rollNoTv.text = rollNo
 
+
+                // Set click listener for the entire item
+                view.setOnClickListener {
+                    // Extract the phone number from the cursor
+                    val phoneNumber = cursor.getString(rollNoIndex)
+                    // Open the phone dialer with the extracted phone number
+                    openPhoneDialer(context, phoneNumber)
+                }
+
                 // Set click listener for the delete button
                 deleteButton.setOnClickListener {
                     // Call the deleteContact function from your DBHelper
@@ -77,4 +87,21 @@ class MyCursorAdapter(context: Context, cursor: Cursor?) :
     }
 
 
+}
+
+
+private fun openPhoneDialer(context: Context, phoneNumber: String) {
+    // Create an Intent to open the phone dialer
+    val dialerIntent = Intent(Intent.ACTION_DIAL)
+    // Set the phone number to dial
+    dialerIntent.data = Uri.parse("tel:$phoneNumber")
+
+    // Check if there's an app to handle the Intent
+    if (dialerIntent.resolveActivity(context.packageManager) != null) {
+        // Start the dialer activity
+        context.startActivity(dialerIntent)
+    } else {
+        // Handle the case where there's no app to handle the Intent
+        Toast.makeText(context, "No app to handle phone dialing.", Toast.LENGTH_SHORT).show()
+    }
 }
