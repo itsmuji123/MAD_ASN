@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <!-- TextView for displaying "All Contacts" -->
+    <TextView
+        android:id="@+id/ContactDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter Details"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:layout_marginTop="30sp"/>
+
+
+    <!-- Edit text to enter name -->
+    <EditText
+        android:id="@+id/enterName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Name"
+        android:textSize="22sp"
+        android:layout_margin="20sp"/>
+
+    <!-- Edit text to enter age -->
+    <EditText
+        android:id="@+id/enterAge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20sp"
+        android:textSize="22sp"
+        android:hint="Enter Number"/>
+
+    <!-- Button to add Name -->
+    <Button
+        android:id="@+id/addName"
+        android:layout_width="250sp"
+        android:layout_gravity="center"
+        android:background="@color/black"
+        android:text="Add Contact"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"/>
+
+    <!-- TextView for displaying "All Contacts" -->
+    <TextView
+        android:id="@+id/allContactsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="All Contacts"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:layout_marginTop="30sp"/>
+
+
+
+
+
+    <ListView
+        android:id="@+id/v"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="1dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp" />
+
+</LinearLayout>
