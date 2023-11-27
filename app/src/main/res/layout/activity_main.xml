@@ -8,6 +8,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+
     <!-- TextView for displaying "All Contacts" -->
     <TextView
         android:id="@+id/ContactDetails"
@@ -50,6 +51,20 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20sp"/>
 
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20sp"
+            android:layout_centerInParent="true"
+            app:queryHint="Search your contacts"
+            />
+
+    </RelativeLayout>
     <!-- TextView for displaying "All Contacts" -->
     <TextView
         android:id="@+id/allContactsText"
@@ -59,7 +74,7 @@
         android:textSize="30sp"
         android:textStyle="bold"
         android:layout_gravity="center"
-        android:layout_marginTop="30sp"/>
+        android:layout_marginTop="20sp"/>
 
 
 

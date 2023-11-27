@@ -1,5 +1,7 @@
 package com.example.unk
 
+import androidx.appcompat.widget.SearchView
+
 import CustomAdapter
 import MyCursorAdapter
 import android.content.Intent
@@ -10,6 +12,9 @@ import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import android.database.Cursor
+import android.widget.CursorAdapter
+
+//import android.widget.SearchView
 
 
 class MainActivity : AppCompatActivity() {
@@ -40,6 +45,28 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Field empty, Try again! ", Toast.LENGTH_SHORT).show()
             }
         }
+        val searchView = findViewById<SearchView>(R.id.searchView)
+
+
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                val filteredCursor = Utils.dbHelper.filterData(newText)
+
+                // Update the CursorAdapter with the filtered data
+                Utils.myCursorAdapter.changeCursor(filteredCursor)
+
+                // Notify the CursorAdapter that the data set has changed
+                Utils.myCursorAdapter.notifyDataSetChanged()
+
+                return true
+            }
+        })
+
     }
     override fun onResume() {
         super.onResume()

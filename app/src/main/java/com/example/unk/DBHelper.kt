@@ -42,6 +42,14 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         db.close()
         return id
     }
+    fun filterData(newText: String?): Cursor? {
+        val db = readableDatabase
+
+        val rawQuery = "SELECT * FROM ${Utils.TABLE_NAME} WHERE " +
+                "${Utils.NAME_COl} LIKE '%$newText%' OR ${Utils.Num_COL} LIKE '%$newText%'"
+
+        return db.rawQuery(rawQuery, null)
+    }
 //
 //    fun getContact(id: Long): Cursor? {
 //        val db = readableDatabase
